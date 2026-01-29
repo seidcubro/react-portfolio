@@ -2,7 +2,7 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <main className="mx-auto max-w-5xl px-6 py-16">
-        <h1 className="text-4xl font-bold tracking-tight">Seid Cubro</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Seid Cubro is gas</h1>
         <p className="mt-4 text-lg text-slate-300">
           Cloud Computing & Computer Science student building software, cloud, and data systems.
         </p>
