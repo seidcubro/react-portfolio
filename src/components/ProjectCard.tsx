@@ -38,7 +38,8 @@ export default function ProjectCard({ project }: { project: Project }) {
           href={project.repoUrl}
           target="_blank"
           rel="noreferrer"
-          className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-900"
+          className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-red-400"
+          aria-label={`Open repository for ${project.title}`}
         >
           Repo
         </a>
@@ -48,7 +49,8 @@ export default function ProjectCard({ project }: { project: Project }) {
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-white"
+            className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-300"
+            aria-label={`Open live site for ${project.title}`}
           >
             Live
           </a>
