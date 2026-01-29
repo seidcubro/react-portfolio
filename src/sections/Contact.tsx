@@ -3,24 +3,32 @@
 export default function Contact() {
   return (
     <Section id="contact" title="Contact">
-      <div className="text-slate-300">
-        <p>
-          Email:{" "}
-          <a className="underline hover:text-white" href="mailto:seidcubro754@gmail.com">
-            seidcubro754@gmail.com
-          </a>
+      <div className="text-white/85">
+        <p className="max-w-2xl leading-relaxed">
+          Best way to reach me is email. I’m also active on GitHub.
         </p>
-        <p className="mt-2">
-          GitHub:{" "}
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <a
-            className="underline hover:text-white"
+            className="rounded-xl border border-white/15 bg-black/30 p-4 hover:bg-black/45 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-teal-300"
+            href="mailto:seidcubro754@gmail.com"
+          >
+            <div className="text-xs text-white/70">Email</div>
+            <div className="mt-1 font-semibold text-white">seidcubro754@gmail.com</div>
+          </a>
+
+          <a
+            className="rounded-xl border border-white/15 bg-black/30 p-4 hover:bg-black/45 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-red-400"
             href="https://github.com/seidcubro"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Open GitHub profile (opens in a new tab)"
           >
-            github.com/seidcubro
+            <div className="text-xs text-white/70">GitHub</div>
+            <div className="mt-1 font-semibold text-white">github.com/seidcubro</div>
+            <span className="sr-only">(opens in new tab)</span>
           </a>
-        </p>
+        </div>
       </div>
     </Section>
   )

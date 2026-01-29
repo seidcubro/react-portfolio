@@ -5,8 +5,12 @@
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Languages",
+    title: "Programming Languages",
     items: ["Python", "JavaScript", "TypeScript", "SQL", "Bash"],
+  },
+  {
+    title: "Spoken Languages",
+    items: ["English", "Bosnian", "Romanian", "Spanish"],
   },
   {
     title: "Web",
@@ -18,10 +22,10 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Data",
-    items: ["Pandas", "Data Cleaning", "Exploratory Data Analysis", "ETL (basics)", "Data Modeling (basics)"],
+    items: ["Pandas", "Data Cleaning", "Exploratory Data Analysis", "ETL", "Data Modeling"],
   },
   {
     title: "Networking/Security (coursework)",
-    items: ["TCP/IP fundamentals", "Subnets (basics)", "Trust boundaries", "Threat modeling (basics)"],
+    items: ["TCP/IP fundamentals", "Subnets", "Trust boundaries", "Threat modeling"],
   },
 ]
