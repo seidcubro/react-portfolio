@@ -1,5 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body { border: 10px solid red; }
+﻿@import "tailwindcss";
