@@ -6,7 +6,10 @@
 
 export default function Section({ id, title, children }: SectionProps) {
   return (
-    <section id={id} className="mx-auto max-w-5xl px-6 py-16">
+    <section
+      id={id}
+      className="mx-auto max-w-5xl scroll-mt-24 px-6 py-16"
+    >
       {title ? (
         <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
       ) : null}
