@@ -23,6 +23,20 @@ export const featuredProjects: Project[] = [
     status: "Ongoing",
   },
   {
+    title: "IoT Cloud Telemetry Platform",
+    description:
+      "Seid Cubro and Charles Shoppel's IoT Cloud Telemetry Platform project for CS-361 Cloud Computing Practicum at Wilkes University",
+    stack: ["IoT", "Networking", "Monitoring", "Data Logging", "Automation", "Security Fundamentals", "AWS"],
+    highlights: [
+      "Real-world CI/CD pipeline platform",
+      "Designed for scalability",
+      "Repository documents system architecture",
+    ],
+    repoUrl:
+      "https://github.com/seidcubro/cs361-iot-cloud-telemetry-platform",
+    status: "Ongoing",
+  },
+  {
     title: "Cloud Computing Practicum",
     description:
       "Coursework repository covering containerization, services, and cloud tooling fundamentals.",
@@ -73,6 +87,6 @@ export const featuredProjects: Project[] = [
     ],
     repoUrl:
       "https://github.com/seidcubro/Seid-Cubro-Garage-Environmental-Monitoring-System",
-    status: "Ongoing",
+    status: "Complete",
   },
 ]
