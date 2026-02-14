@@ -26,7 +26,7 @@ export const featuredProjects: Project[] = [
     title: "Machine Learning Player Prop Analysis Platform",
     description:
       "Full-stack machine learning platform designed to analyze player prop performance using real-world statistical data. Building data pipelines for ingestion, cleaning, feature engineering, and model training using Python and SQL-based workflows. Developing backend APIs and integrating structured datasets for scalable analysis and reporting.",
-    stack: ["Python", "SQL", "Pandas", "ETL", "Data Modeling" "AWS" "DynamoDB" "Machine Learning"],
+    stack: ["Python", "SQL", "Pandas", "ETL", "Data Modeling", "AWS", "DynamoDB", "Machine Learning"],
     highlights: [
       "Full-stack machine learning platform",
       "Organized data pipelines for data ingestion, cleaning, feature engineering",
