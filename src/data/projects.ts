@@ -22,6 +22,19 @@ export const featuredProjects: Project[] = [
     repoUrl: "https://github.com/seidcubro/react-portfolio",
     status: "Ongoing",
   },
+    {
+    title: "Machine Learning Player Prop Analysis Platform",
+    description:
+      "Full-stack machine learning platform designed to analyze player prop performance using real-world statistical data. Building data pipelines for ingestion, cleaning, feature engineering, and model training using Python and SQL-based workflows. Developing backend APIs and integrating structured datasets for scalable analysis and reporting.",
+    stack: ["Python", "SQL", "Pandas", "ETL", "Data Modeling" "AWS" "DynamoDB" "Machine Learning"],
+    highlights: [
+      "Full-stack machine learning platform",
+      "Organized data pipelines for data ingestion, cleaning, feature engineering",
+      "Model training using Python and SQL-based workflows",
+    ],
+    repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
+    status: "Ongoing",
+  },
   {
     title: "IoT Cloud Telemetry Platform",
     description:
@@ -47,19 +60,6 @@ export const featuredProjects: Project[] = [
       "Clean repository structure for iterative coursework",
     ],
     repoUrl: "https://github.com/seidcubro/cloud-computing-practicum",
-    status: "Ongoing",
-  },
-  {
-    title: "Data Systems Projects",
-    description:
-      "Data-focused projects involving analysis, structured datasets, and system workflows.",
-    stack: ["Python", "SQL", "Pandas", "ETL", "Data Modeling"],
-    highlights: [
-      "Dataset analysis and transformation",
-      "Emphasis on clean data and reproducibility",
-      "Organized project structure for future expansion",
-    ],
-    repoUrl: "https://github.com/seidcubro/data-systems-projects",
     status: "Ongoing",
   },
   {
