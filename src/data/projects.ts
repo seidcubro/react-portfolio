@@ -22,19 +22,22 @@ export const featuredProjects: Project[] = [
     repoUrl: "https://github.com/seidcubro/react-portfolio",
     status: "Ongoing",
   },
-    {
-    title: "Machine Learning Player Prop Analysis Platform",
-    description:
-      "Full-stack machine learning platform designed to analyze player prop performance using real-world statistical data. Building data pipelines for ingestion, cleaning, feature engineering, and model training using Python and SQL-based workflows. Developing backend APIs and integrating structured datasets for scalable analysis and reporting.",
-    stack: ["Python", "SQL", "Pandas", "ETL", "Data Modeling", "AWS", "DynamoDB", "Machine Learning"],
-    highlights: [
-      "Full-stack machine learning platform",
-      "Organized data pipelines for data ingestion, cleaning, feature engineering",
-      "Model training using Python and SQL-based workflows",
-    ],
-    repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
-    status: "Ongoing",
-  },
+  {
+  title: "Machine Learning Player Prop Analysis Platform",
+  description:
+    "Full-stack ML platform that analyzes NFL player prop performance using real statistical data. Built scalable data pipelines, backend APIs, and model workflows for automated analysis and prediction.",
+  stack: [
+    "Python", "SQL", "Pandas", "ETL","Machine Learning", "AWS", "DynamoDB"
+  ],
+  highlights: [
+    "End-to-end data pipeline (ingestion → feature engineering → training)",
+    "Backend API architecture for scalable analytics",
+    "Automated model training using real-world sports data",
+  ],
+  repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
+  status: "Ongoing",
+},
+
   {
     title: "IoT Cloud Telemetry Platform",
     description:
