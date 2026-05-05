@@ -20,7 +20,7 @@ export const featuredProjects: Project[] = [
       "Designed to scale as a long-term portfolio",
     ],
     repoUrl: "https://github.com/seidcubro/react-portfolio",
-    status: "Ongoing",
+    status: "Complete",
   },
   {
   title: "Machine Learning Player Prop Analysis Platform",
@@ -50,7 +50,7 @@ export const featuredProjects: Project[] = [
     ],
     repoUrl:
       "https://github.com/seidcubro/cs361-iot-cloud-telemetry-platform",
-    status: "Ongoing",
+    status: "Complete",
   },
   {
     title: "Cloud Computing Practicum",

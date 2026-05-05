@@ -16,8 +16,8 @@ export default function About() {
         </p>
 
         <p>
-          Outside tech, I’m into football (Liverpool FC), American football (Steelers), speedcubing,
-          playing piano, music, hiking, concerts, traveling, and pro wrestling. I’m big on experiences —
+          Outside tech, I’m into football (Liverpool FC), American football (Steelers), playing
+          piano, music, hiking, concerts, traveling, and pro wrestling. I’m big on experiences —
           new places, new environments, and anything that feels like a story worth having.
         </p>
       </div>
