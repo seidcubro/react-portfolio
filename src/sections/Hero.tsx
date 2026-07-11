@@ -10,7 +10,7 @@
             <span className="h-2 w-2 rounded-full bg-red-400" />
             Cloud • Software • Data
             <span className="h-1 w-1 rounded-full bg-white/30" />
-            <span className="text-teal-200">Open to internships</span>
+            <span className="text-teal-200">Open to work</span>
           </p>
 
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
@@ -21,7 +21,7 @@
           </h1>
 
           <p className="mt-5 text-lg sm:text-xl leading-relaxed text-white/85">
-            Cloud Computing & Computer Science student building software, cloud, and data systems.
+            IT Coordinator at Evercor Facility Management, Cloud Computing & Computer Science student building software, cloud, and data systems.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
