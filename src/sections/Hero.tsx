@@ -56,7 +56,7 @@
         <div className="shrink-0 self-start md:self-auto">
           <div className="rounded-3xl border border-white/30 bg-black/20 p-2 shadow-2xl">
             <img
-              src="/headshot.png"
+              src="/headshot.jpg"
               alt="Portrait of Seid Cubro"
               className="h-44 w-44 rounded-2xl border-2 border-white object-cover md:h-56 md:w-56"
               loading="lazy"
