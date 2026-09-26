@@ -11,13 +11,13 @@ export default function About() {
 
         <p>
           I’m drawn to Cloud Computing because it combines problem solving with real systems:
-          services, deployments, reliability, security, and performance. I like programming
-          in general —the thinking part, the iteration, and turning an idea into something usable.
+          services, deployments, reliability, security, and performance. I like programming in
+          general — the thinking part, the iteration, and turning an idea into something usable.
         </p>
 
         <p>
-          Outside tech, I’m into football (Liverpool FC), American football (Steelers), playing
-          piano, music, hiking, concerts, traveling, and pro wrestling. I’m big on experiences —
+          Outside tech, I’m into football (Liverpool FC), American football (Steelers), 
+          music, hiking, concerts, traveling, and pro wrestling. I’m big on experiences —
           new places, new environments, and anything that feels like a story worth having.
         </p>
       </div>
