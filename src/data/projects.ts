@@ -10,6 +10,21 @@
 
 export const featuredProjects: Project[] = [
   {
+  title: "PriorLine - Machine Learning Analysis Platform",
+  description:
+    "Full-stack ML platform that analyzes NFL player prop performance using real statistical data. Built scalable data pipelines, backend APIs, and model workflows for automated analysis and prediction.",
+  stack: [
+    "Python", "SQL", "Pandas", "ETL","Machine Learning", "PostgreSQL", "Docker"
+  ],
+  highlights: [
+    "End-to-end data pipeline (ingestion → feature engineering → training)",
+    "Backend API architecture for scalable analytics",
+    "Automated model training using real-world sports data",
+  ],
+  repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
+  status: "Complete",
+  },
+  {
     title: "React Portfolio",
     description:
       "Single-scroll personal portfolio built with React and TypeScript, focused on clarity, accessibility, and clean design.",
@@ -22,21 +37,7 @@ export const featuredProjects: Project[] = [
     repoUrl: "https://github.com/seidcubro/react-portfolio",
     status: "Complete",
   },
-  {
-  title: "Machine Learning Player Prop Analysis Platform",
-  description:
-    "Full-stack ML platform that analyzes NFL player prop performance using real statistical data. Built scalable data pipelines, backend APIs, and model workflows for automated analysis and prediction.",
-  stack: [
-    "Python", "SQL", "Pandas", "ETL","Machine Learning", "AWS", "DynamoDB"
-  ],
-  highlights: [
-    "End-to-end data pipeline (ingestion → feature engineering → training)",
-    "Backend API architecture for scalable analytics",
-    "Automated model training using real-world sports data",
-  ],
-  repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
-  status: "Ongoing",
-},
+  
 
   {
     title: "IoT Cloud Telemetry Platform",
