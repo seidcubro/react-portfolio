@@ -1,120 +1,147 @@
-﻿import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion"
+import { links as site } from "../data/links"
+import { easeOut, introDelay } from "../lib/motion"
 
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+const nav = [
+  { id: "about", label: "About" },
+  { id: "work", label: "Work" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
 ]
 
-function prefersReducedMotion() {
-  return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-}
-
 export default function Navbar() {
-  const [active, setActive] = useState<string>("#about")
+  const [active, setActive] = useState("")
+  const [open, setOpen] = useState(false)
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 })
 
+  // Highlight the section that currently sits under the top third of the screen.
   useEffect(() => {
-    const sections = links
-      .map((l) => ({ href: l.href, el: document.getElementById(l.href.slice(1)) }))
-      .filter((x): x is { href: string; el: HTMLElement } => Boolean(x.el))
-
-    const getNavOffset = () => {
-      const header = document.getElementById("site-header")
-      const h = header?.getBoundingClientRect().height ?? 96
-      return Math.min(Math.max(h + 16, 96), 160) // clamp
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id)
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    )
+    for (const n of nav) {
+      const el = document.getElementById(n.id)
+      if (el) io.observe(el)
     }
-
-    const computeActive = () => {
-      const nearBottom =
-        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 60
-      if (nearBottom) return "#contact"
-
-      const NAV_OFFSET = getNavOffset()
-
-      let current = sections[0]?.href ?? "#about"
-      for (const s of sections) {
-        const top = s.el.getBoundingClientRect().top
-        if (top - NAV_OFFSET <= 0) current = s.href
-      }
-      return current
-    }
-
-    let ticking = false
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      window.requestAnimationFrame(() => {
-        setActive(computeActive())
-        ticking = false
-      })
-    }
-
-    setActive(computeActive())
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
-
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
-    }
+    return () => io.disconnect()
   }, [])
 
-  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("#")) return
-    e.preventDefault()
-
-    const id = href.slice(1)
-    const el = document.getElementById(id)
-    if (!el) return
-
-    el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" })
-    history.replaceState(null, "", href)
-    setActive(href)
-  }
-
-  const ring =
-    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black hover:ring-2 hover:ring-offset-2 hover:ring-offset-black"
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : ""
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false)
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [open])
 
   return (
-    <header
-      id="site-header"
-      className="sticky top-0 z-20 border-b border-white/10 bg-black/75 sm:bg-black/45 sm:backdrop-blur"
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
-    >
-      <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-6 sm:py-4">
-        <a
-          href="#about"
-          onClick={(e) => handleNav(e, "#about")}
-          className={`w-fit rounded-md px-2 py-1 text-sm font-semibold tracking-tight text-white ${ring} hover:ring-red-400 focus:ring-red-400`}
-        >
-          Seid Cubro
-        </a>
+    <>
+      <motion.div
+        aria-hidden="true"
+        className="fixed inset-x-0 top-0 z-50 h-0.5 origin-left bg-gradient-to-r from-[var(--red)] to-[var(--teal)]"
+        style={{ scaleX: progress }}
+      />
 
-        <nav aria-label="Primary" className="flex flex-wrap justify-start gap-2 sm:justify-end sm:gap-4">
-          {links.map((l) => {
-            const isActive = active === l.href
-            return (
+      <motion.header
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: easeOut, delay: introDelay + 0.05 }}
+        className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:px-8"
+      >
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[#05070f]/70 pl-5 pr-2 backdrop-blur-xl">
+          <a href="#top" className="flex min-h-11 items-center gap-2.5 font-display text-[15px] font-semibold tracking-tight">
+            <span className="live" />
+            Seid Cubro
+          </a>
+
+          <nav aria-label="Primary" className="hidden items-center md:flex">
+            {nav.map((n) => (
               <a
-                key={l.href}
-                href={l.href}
-                onClick={(e) => handleNav(e, l.href)}
-                aria-current={isActive ? "page" : undefined}
-                className={[
-                  "rounded-md px-3 py-2 text-sm",
-                  "text-white/85 hover:text-white",
-                  "border border-transparent",
-                  isActive ? "bg-white/7 border-white/15" : "hover:bg-white/5",
-                  ring,
-                  "hover:ring-teal-300 focus:ring-teal-300",
-                ].join(" ")}
+                key={n.id}
+                href={`#${n.id}`}
+                aria-current={active === n.id ? "true" : undefined}
+                className={`relative rounded-full px-4 py-2 text-sm transition-colors duration-200 ${
+                  active === n.id ? "text-white" : "text-white/60 hover:text-white"
+                }`}
               >
-                {l.label}
+                {active === n.id ? (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full border border-white/12 bg-white/8"
+                    transition={{ type: "spring", duration: 0.5, bounce: 0.18 }}
+                  />
+                ) : null}
+                <span className="relative">{n.label}</span>
               </a>
-            )
-          })}
-        </nav>
-      </div>
-    </header>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href={site.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary !min-h-10 !px-4 text-sm"
+            >
+              Resume
+            </a>
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/12 md:hidden"
+            >
+              <span className="relative block h-3 w-4">
+                <span
+                  className={`absolute left-0 h-px w-4 bg-white transition-transform duration-200 ${open ? "top-1.5 rotate-45" : "top-0"}`}
+                />
+                <span
+                  className={`absolute left-0 h-px w-4 bg-white transition-transform duration-200 ${open ? "top-1.5 -rotate-45" : "top-3"}`}
+                />
+              </span>
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-30 flex flex-col justify-center bg-[#05070f]/95 px-8 backdrop-blur-xl md:hidden"
+          >
+            <nav aria-label="Mobile" className="flex flex-col gap-2">
+              {nav.map((n, i) => (
+                <motion.a
+                  key={n.id}
+                  href={`#${n.id}`}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: easeOut, delay: 0.04 * i }}
+                  className="py-3 font-display text-4xl font-semibold tracking-tight"
+                >
+                  {n.label}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
   )
 }

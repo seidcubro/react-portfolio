@@ -1,96 +1,86 @@
-﻿export type Project = {
+export type Project = {
+  slug: string
   title: string
+  kicker: string
   description: string
   stack: string[]
   highlights: string[]
+  pipeline?: string[]
+  stats?: { value: string; label: string }[]
   repoUrl: string
   liveUrl?: string
-  status: "Ongoing" | "Complete"
+  liveLabel?: string
+  status: "Live" | "Complete" | "In progress"
 }
 
-export const featuredProjects: Project[] = [
+export const featured: Project[] = [
   {
-  title: "PriorLine - Machine Learning Analysis Platform",
-  description:
-    "Full-stack ML platform that analyzes NFL player prop performance using real statistical data. Built scalable data pipelines, backend APIs, and model workflows for automated analysis and prediction.",
-  stack: [
-    "Python", "SQL", "Pandas", "ETL","Machine Learning", "PostgreSQL", "Docker"
-  ],
-  highlights: [
-    "End-to-end data pipeline (ingestion → feature engineering → training)",
-    "Backend API architecture for scalable analytics",
-    "Automated model training using real-world sports data",
-  ],
-  repoUrl: "https://github.com/seidcubro/player-prop-machine-learning-analysis-platform",
-  status: "Complete",
+    slug: "priorline",
+    title: "PriorLine",
+    kicker: "Machine learning platform · built and run solo",
+    description:
+      "NFL player prop projections, in production with no manual steps. It pulls every line the books post, projects what each player will do, and grades every pick against the price it was offered at. The full record is public, losing weeks included.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "scikit-learn", "React", "TypeScript", "Docker Compose", "Caddy", "GitHub Actions", "Vercel"],
+    highlights: [
+      "Five systemd timers ingest, rebuild features, retrain, grade, and audit data freshness. A stale input fails the run.",
+      "Each market's model is chosen by walk-forward cross-validation and only replaced on a win larger than one standard error.",
+      "Server sized from measured memory: peak ingest cut from 4.2 GB to 3.6 GB.",
+    ],
+    pipeline: ["nflverse", "Features", "Models", "Board", "API", "Web"],
+    stats: [
+      { value: "340+", label: "commits" },
+      { value: "12,000+", label: "graded picks" },
+      { value: "11", label: "models, retrained weekly" },
+      { value: "5", label: "seasons of data" },
+    ],
+    repoUrl: "https://github.com/seidcubro/priorline",
+    liveUrl: "https://priorline.io",
+    liveLabel: "Visit priorline.io",
+    status: "Live",
   },
   {
-    title: "React Portfolio",
+    slug: "telemetry",
+    title: "IoT Telemetry Platform",
+    kicker: "Cloud, infrastructure and security lead · two-person team",
     description:
-      "Single-scroll personal portfolio built with React and TypeScript, focused on clarity, accessibility, and clean design.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vercel"],
+      "An event-driven sensor pipeline on AWS. An ESP32 streams temperature and humidity through three containerized Python services running on Kubernetes.",
+    stack: ["AWS", "Kubernetes", "SQS", "DynamoDB", "ECR", "Docker", "Python", "k6"],
     highlights: [
-      "Single-page layout with smooth navigation",
-      "Accessible focus states and reduced-motion support",
-      "Designed to scale as a long-term portfolio",
+      "A queue separates ingestion from storage, so a traffic spike never hits the database directly.",
+      "API-key-protected ingestion, threshold alerts, and an OpenAPI contract.",
+      "Validated on a local cluster with autoscaling, then load-tested with k6 to 150 concurrent virtual users.",
     ],
-    repoUrl: "https://github.com/seidcubro/react-portfolio",
+    pipeline: ["ESP32", "Ingest", "SQS", "Worker", "DynamoDB", "API"],
+    stats: [
+      { value: "3", label: "containerized services" },
+      { value: "150", label: "virtual users in load test" },
+    ],
+    repoUrl: "https://github.com/seidcubro/cs361-iot-cloud-telemetry-platform",
     status: "Complete",
   },
-  
+]
 
+export const more: Project[] = [
   {
-    title: "IoT Cloud Telemetry Platform",
+    slug: "capstone",
+    title: "RF Signal Classification",
+    kicker: "Senior capstone · cloud infrastructure lead",
     description:
-      "Seid Cubro and Charles Shoppel's IoT Cloud Telemetry Platform project for CS-361 Cloud Computing Practicum at Wilkes University",
-    stack: ["IoT", "Networking", "Monitoring", "Data Logging", "Automation", "Security Fundamentals", "AWS"],
-    highlights: [
-      "Real-world CI/CD pipeline platform",
-      "Designed for scalability",
-      "Repository documents system architecture",
-    ],
-    repoUrl:
-      "https://github.com/seidcubro/cs361-iot-cloud-telemetry-platform",
-    status: "Complete",
+      "Cloud architecture for a three-person team with industry stakeholders: versioned S3 storage for large RF datasets, EC2 compute for training, least-privilege IAM, and secure lab-to-cloud connectivity.",
+    stack: ["Amazon S3", "EC2", "IAM", "CI/CD"],
+    highlights: [],
+    repoUrl: "",
+    status: "In progress",
   },
   {
-    title: "Cloud Computing Practicum",
+    slug: "portfolio",
+    title: "This site",
+    kicker: "React portfolio",
     description:
-      "Coursework repository covering containerization, services, and cloud tooling fundamentals.",
-    stack: ["Linux", "Docker", "Git", "Cloud Fundamentals", "Networking"],
-    highlights: [
-      "Lab-based development with reports and evidence",
-      "Containerized services and local testing",
-      "Clean repository structure for iterative coursework",
-    ],
-    repoUrl: "https://github.com/seidcubro/cloud-computing-practicum",
-    status: "Ongoing",
-  },
-  {
-    title: "Networking & Security Labs",
-    description:
-      "Hands-on networking and security labs with documentation, diagrams, and written reports.",
-    stack: ["Networking", "Security Fundamentals", "Linux", "Git", "Documentation"],
-    highlights: [
-      "Threat modeling and trust boundary analysis",
-      "Structured lab submissions",
-      "Security concepts applied in practice",
-    ],
-    repoUrl: "https://github.com/seidcubro/network-security-labs",
-    status: "Ongoing",
-  },
-  {
-    title: "Garage Environmental Monitoring System (IoT)",
-    description:
-      "IoT system for monitoring and logging environmental conditions in a real-world garage environment.",
-    stack: ["IoT", "Sensors", "Monitoring", "Data Logging", "Automation"],
-    highlights: [
-      "Real-world environmental data tracking",
-      "Designed for expansion and alerts",
-      "Repository documents system architecture",
-    ],
-    repoUrl:
-      "https://github.com/seidcubro/Seid-Cubro-Garage-Environmental-Monitoring-System",
-    status: "Complete",
+      "React and TypeScript, built with Vite and Tailwind, animated with Motion, and deployed on Vercel with a custom domain.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion", "Vercel"],
+    highlights: [],
+    repoUrl: "https://github.com/seidcubro/react-portfolio",
+    status: "Live",
   },
 ]

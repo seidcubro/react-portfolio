@@ -1,24 +1,29 @@
-﻿import Reveal from "./Reveal"
+import type { ReactNode } from "react"
+import Reveal from "./Reveal"
+import Scramble from "./Scramble"
 
-type SectionProps = {
-  id?: string
-  title?: string
-  children: React.ReactNode
+type Props = {
+  id: string
+  index: string
+  label: string
+  title: ReactNode
+  children: ReactNode
 }
 
-export default function Section({ id, title, children }: SectionProps) {
+export default function Section({ id, index, label, title, children }: Props) {
   return (
-    <section id={id} className="mx-auto max-w-5xl scroll-mt-40 sm:scroll-mt-28 px-4 sm:px-6 py-14 sm:py-16">
+    <section id={id} className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
       <Reveal>
-        {title ? (
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
-            <div className="mt-3 h-px w-24 bg-gradient-to-r from-red-400 to-teal-200 opacity-80" />
-          </div>
-        ) : null}
-
-        <div className={title ? "mt-6" : ""}>{children}</div>
+        <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
+          <span className="text-[var(--teal)]">{index}</span>
+          <span className="h-px w-10 bg-white/20" />
+          <Scramble text={label} />
+        </p>
+        <h2 className="mt-5 max-w-3xl font-display text-[2rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl">
+          {title}
+        </h2>
       </Reveal>
+      <div className="mt-10 sm:mt-16">{children}</div>
     </section>
   )
 }
